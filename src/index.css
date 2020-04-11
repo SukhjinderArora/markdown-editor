@@ -1,9 +1,17 @@
+@import url('assets/css/normalize.css');
+
 @import url('assets/fonts/fira-code/fira-code.css');
-@import url('assets/fonts/ubuntu-condensed/ubuntu-condensed.css');
+@import url('assets/fonts/roboto-condensed/roboto-condensed.css');
+
+*::before,
+*,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  font-family: 'Ubuntu Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
