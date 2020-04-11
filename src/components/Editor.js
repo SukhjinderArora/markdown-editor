@@ -35,7 +35,12 @@ const TextEditor = styled.textarea`
   color: #abb2bf;
   border: none;
   border-right: 1px solid #abb2bf;
+  font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
   font-size: 16px;
   line-height: 1.4;
   padding: 10px;
+  &:focus {
+    outline: none;
+  }
 `;

@@ -2,6 +2,7 @@
 
 @import url('assets/fonts/fira-code/fira-code.css');
 @import url('assets/fonts/roboto-condensed/roboto-condensed.css');
+@import url('assets/fonts/fira-sans/fira-sans.css');
 
 *::before,
 *,
@@ -16,9 +17,4 @@ body {
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas,
-    'Courier New', monospace;
 }
