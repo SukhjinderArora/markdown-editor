@@ -65,6 +65,11 @@ const PreviewContainer = styled.div`
   & img {
     max-width: 100%;
   }
+  & a,
+  & a:active,
+  & a:link {
+    color: #3485e4;
+  }
   & table {
     width: 100%;
     overflow: auto;
