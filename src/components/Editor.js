@@ -10,7 +10,11 @@ const propTypes = {
 const Editor = ({ text, onTextChange }) => {
   return (
     <Wrapper>
-      <TextEditor onChange={onTextChange} value={text} />
+      <TextEditor
+        onChange={onTextChange}
+        value={text}
+        placeholder="Type here to start."
+      />
     </Wrapper>
   );
 };
@@ -31,16 +35,13 @@ const TextEditor = styled.textarea`
   width: 100%;
   height: 100%;
   resize: none;
-  background: #282c34;
-  color: #abb2bf;
-  border: none;
-  border-right: 1px solid #abb2bf;
+  background: ${(props) => props.theme.bg};
+  color: ${(props) => props.theme.fg};
+  border: 1px solid transparent;
+  border-right: 1px solid ${(props) => props.theme.fg};
   font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas,
     'Courier New', monospace;
   font-size: 16px;
   line-height: 1.4;
   padding: 10px;
-  &:focus {
-    outline: none;
-  }
 `;

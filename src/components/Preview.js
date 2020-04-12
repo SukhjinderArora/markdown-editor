@@ -31,8 +31,8 @@ const PreviewContainer = styled.div`
   height: 100%;
   max-height: 100%;
   overflow-y: scroll;
-  background: #282c34;
-  color: #abb2bf;
+  background: ${(props) => props.theme.bg};
+  color: ${(props) => props.theme.fg};
   padding: 10px;
   font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
@@ -53,14 +53,18 @@ const PreviewContainer = styled.div`
     font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas,
       'Courier New', monospace;
   }
-  & p > code {
-    color: #b5b226;
+  & code {
+    color: ${(props) => props.theme.codeColor};
+  }
+
+  & pre code {
+    color: inherit;
   }
   & blockquote {
-    border-left: 4px solid #195788;
+    border-left: 4px solid ${(props) => props.theme.blockQuote.borderColor};
     padding: 1px 15px;
-    color: #bfc7d5;
-    background: #323545d9;
+    color: ${(props) => props.theme.blockQuote.fg};
+    background: ${(props) => props.theme.blockQuote.bg};
   }
   & img {
     max-width: 100%;
@@ -68,7 +72,7 @@ const PreviewContainer = styled.div`
   & a,
   & a:active,
   & a:link {
-    color: #3485e4;
+    color: ${(props) => props.theme.linkColor};
   }
   & table {
     width: 100%;
@@ -77,16 +81,16 @@ const PreviewContainer = styled.div`
     border-spacing: 0;
     border-collapse: collapse;
     & tr {
-      border-top: 1px solid #abb2bf;
+      border-top: 1px solid ${(props) => props.theme.table.borderColor};
       background-color: transparent;
     }
     & th {
-      border: 1px solid #abb2bf;
+      border: 1px solid ${(props) => props.theme.table.borderColor};
       padding: 6px 13px;
       font-weight: 700;
     }
     & td {
-      border: 1px solid #abb2bf;
+      border: 1px solid ${(props) => props.theme.table.borderColor};
       padding: 6px 13px;
     }
   }

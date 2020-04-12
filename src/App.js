@@ -1,37 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
-import marked from './utils/marked';
+import themeObj from './utils/themes';
 
-import Editor from './components/Editor';
-import Preview from './components/Preview';
+import Markdown from './components/Markdown';
+import BottomBar from './components/BottomBar';
+import Settings from './components/Settings';
 
 function App() {
-  const [inputText, setInputText] = useState('');
-  const [html, setHtml] = useState('');
+  const [theme, setTheme] = useState(themeObj.dark);
+  const [settingsVisible, setSettingsVisible] = useState(false);
 
   useEffect(() => {
-    const htmlStr = marked(inputText);
-    setHtml(htmlStr);
-  }, [inputText]);
+    document.querySelectorAll('link[title=theme]').forEach((link) => {
+      // eslint-disable-next-line no-param-reassign
+      link.disabled = link.id !== theme.themeName;
+    });
+  }, [theme]);
 
-  const onTextChangeHandler = (e) => {
-    setInputText(e.target.value);
+  const selectThemeBtnHandler = (newTheme) => {
+    if (newTheme === 'dark') {
+      setTheme(themeObj.dark);
+    } else {
+      setTheme(themeObj.light);
+    }
+    setSettingsVisible(false);
   };
 
   return (
-    <Markdown>
-      <Editor text={inputText} onTextChange={onTextChangeHandler} />
-      <Preview html={html} />
-    </Markdown>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Markdown />
+        <BottomBar setSettingsVisible={setSettingsVisible} />
+        <Settings
+          themeBtnHandler={selectThemeBtnHandler}
+          settingsVisible={settingsVisible}
+        />
+      </Container>
+    </ThemeProvider>
   );
 }
 
 // Styles
-const Markdown = styled.main`
-  display: flex;
-  max-height: 100vh;
-  height: 100vh;
+const Container = styled.div`
+  position: relative;
 `;
 
 export default App;
