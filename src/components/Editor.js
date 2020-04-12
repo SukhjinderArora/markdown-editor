@@ -19,10 +19,6 @@ const Editor = ({ text, onTextChange }) => {
   );
 };
 
-Editor.propTypes = propTypes;
-
-export default Editor;
-
 // Styles
 const Wrapper = styled.section`
   width: 50%;
@@ -45,3 +41,6 @@ const TextEditor = styled.textarea`
   line-height: 1.4;
   padding: 10px;
 `;
+
+Editor.propTypes = propTypes;
+export default Editor;

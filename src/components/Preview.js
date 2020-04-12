@@ -17,9 +17,6 @@ const Preview = ({ html }) => {
   );
 };
 
-Preview.propTypes = propTypes;
-export default Preview;
-
 // Styles
 const Wrapper = styled.section`
   width: 50%;
@@ -95,3 +92,6 @@ const PreviewContainer = styled.div`
     }
   }
 `;
+
+Preview.propTypes = propTypes;
+export default Preview;
