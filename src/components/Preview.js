@@ -1,31 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Wrapper from './shared/Wrapper.sc';
 import Tab from './Tab';
+import EditButton from './shared/TransparentButton.sc';
+import { EditIcon } from './shared/Icons.sc';
 
 const propTypes = {
   html: PropTypes.string.isRequired,
 };
 
 const Preview = ({ html }) => {
+  const [closeWindow, setWindowClose] = useState(false);
+
+  const tabCloseHandler = () => {
+    setWindowClose(true);
+  };
   const createMarkup = () => {
     return { __html: html };
   };
   return (
-    <Wrapper>
-      <Tab title="Preview" />
+    <Wrapper closeWindow={closeWindow}>
+      <Tab title="Preview" tabCloseHandler={tabCloseHandler}>
+        <EditButton title="open editor">
+          <EditIcon />
+        </EditButton>
+      </Tab>
       <PreviewContainer dangerouslySetInnerHTML={createMarkup()} />
     </Wrapper>
   );
 };
 
 // Styles
-const Wrapper = styled.section`
-  width: 50%;
-  height: 100%;
-`;
-
 const PreviewContainer = styled.div`
   width: 100%;
   height: calc(100% - 40px);

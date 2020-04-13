@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Wrapper from './shared/Wrapper.sc';
 import Tab from './Tab';
+import PreviewButton from './shared/TransparentButton.sc';
+import { PreviewIcon } from './shared/Icons.sc';
 
 const propTypes = {
   text: PropTypes.string.isRequired,
@@ -10,9 +13,19 @@ const propTypes = {
 };
 
 const Editor = ({ text, onTextChange }) => {
+  const [closeWindow, setWindowClose] = useState(false);
+
+  const tabCloseHandler = () => {
+    setWindowClose(true);
+  };
+
   return (
-    <Wrapper>
-      <Tab title="Editor" />
+    <Wrapper closeWindow={closeWindow}>
+      <Tab title="Editor" tabCloseHandler={tabCloseHandler}>
+        <PreviewButton title="open preview">
+          <PreviewIcon />
+        </PreviewButton>
+      </Tab>
       <TextEditor
         onChange={onTextChange}
         value={text}
@@ -23,11 +36,6 @@ const Editor = ({ text, onTextChange }) => {
 };
 
 // Styles
-const Wrapper = styled.section`
-  width: 50%;
-  height: 100%;
-`;
-
 const TextEditor = styled.textarea`
   -webkit-appearance: none;
   appearance: none;
@@ -43,6 +51,9 @@ const TextEditor = styled.textarea`
   font-size: 16px;
   line-height: 1.4;
   padding: 10px;
+  &:focus {
+    outline: none;
+  }
 `;
 
 Editor.propTypes = propTypes;

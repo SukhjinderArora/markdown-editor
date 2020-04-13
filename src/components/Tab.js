@@ -2,21 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { ReactComponent as TabCloseIconSVG } from '../assets/images/svg/tab-close-icon.svg';
+import TabCloseButton from './shared/TransparentButton.sc';
+import { TabCloseIcon } from './shared/Icons.sc';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
+  tabCloseHandler: PropTypes.func.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
-const Tab = ({ title }) => {
+const Tab = ({ title, tabCloseHandler, children }) => {
   return (
     <Wrapper>
       <StyledTab>
         <TabTitle>{title}</TabTitle>
-        <TabCloseBtn title="close" tabIndex="0">
+        <TabCloseButton title="close tab" onClick={tabCloseHandler}>
           <TabCloseIcon />
-        </TabCloseBtn>
+        </TabCloseButton>
       </StyledTab>
+      {children}
     </Wrapper>
   );
 };
@@ -26,43 +30,25 @@ const Wrapper = styled.div`
   background: ${(props) =>
     props.theme.themeName === 'dark-theme' ? '#282c34f0' : '#eee'};
   height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const StyledTab = styled.div`
   width: 200px;
+  height: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: ${(props) =>
     props.theme.themeName === 'dark-theme' ? '#282c34' : '#fff'};
 `;
 
 const TabTitle = styled.h1`
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 14px;
   margin-left: 10px;
-  color: #fff;
-  color: ${(props) =>
-    props.theme.themeName === 'dark-theme' ? '#fff' : '#000'};
-`;
-
-const TabCloseBtn = styled.button`
-  background: transparent;
-  border: 1px solid transparent;
-  cursor: pointer;
-  &:focus {
-    border-color: ${(props) =>
-      props.theme.themeName === 'dark-theme' ? '#fff' : '#000'};
-  }
-`;
-
-const TabCloseIcon = styled(TabCloseIconSVG)`
-  width: 20px;
-  stroke: ${(props) =>
-    props.theme.themeName === 'dark-theme' ? '#fff' : '#000'};
-  & polygon {
-    fill: ${(props) =>
-      props.theme.themeName === 'dark-theme' ? '#fff' : '#000'};
-  }
+  color: ${(props) => props.theme.fg};
 `;
 
 Tab.propTypes = propTypes;
