@@ -11,7 +11,7 @@ const propTypes = {
 const BottomBar = ({ setSettingsVisible }) => {
   return (
     <Footer>
-      <SettingsButton onClick={() => setSettingsVisible(true)}>
+      <SettingsButton onClick={() => setSettingsVisible(true)} title="settings">
         <SettingsIcon />
       </SettingsButton>
     </Footer>

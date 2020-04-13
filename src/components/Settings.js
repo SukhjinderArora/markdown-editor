@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const propTypes = {
   themeBtnHandler: PropTypes.func.isRequired,
-  settingsVisible: PropTypes.func.isRequired,
+  settingsVisible: PropTypes.bool.isRequired,
 };
 
 const Settings = ({ themeBtnHandler, settingsVisible }) => {

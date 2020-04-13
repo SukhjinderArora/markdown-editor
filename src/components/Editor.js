@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Tab from './Tab';
+
 const propTypes = {
   text: PropTypes.string.isRequired,
   onTextChange: PropTypes.func.isRequired,
@@ -10,6 +12,7 @@ const propTypes = {
 const Editor = ({ text, onTextChange }) => {
   return (
     <Wrapper>
+      <Tab title="Editor" />
       <TextEditor
         onChange={onTextChange}
         value={text}
@@ -29,7 +32,7 @@ const TextEditor = styled.textarea`
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 40px);
   resize: none;
   background: ${(props) => props.theme.bg};
   color: ${(props) => props.theme.fg};

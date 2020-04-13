@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Tab from './Tab';
+
 const propTypes = {
   html: PropTypes.string.isRequired,
 };
@@ -12,6 +14,7 @@ const Preview = ({ html }) => {
   };
   return (
     <Wrapper>
+      <Tab title="Preview" />
       <PreviewContainer dangerouslySetInnerHTML={createMarkup()} />
     </Wrapper>
   );
@@ -25,9 +28,9 @@ const Wrapper = styled.section`
 
 const PreviewContainer = styled.div`
   width: 100%;
-  height: 100%;
-  max-height: 100%;
-  overflow-y: scroll;
+  height: calc(100% - 40px);
+  max-height: calc(100% - 40px);
+  overflow-y: auto;
   background: ${(props) => props.theme.bg};
   color: ${(props) => props.theme.fg};
   padding: 10px;
