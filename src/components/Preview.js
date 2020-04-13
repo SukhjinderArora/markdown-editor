@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -9,21 +9,30 @@ import { EditIcon } from './shared/Icons.sc';
 
 const propTypes = {
   html: PropTypes.string.isRequired,
+  isPreviewWindowOpen: PropTypes.bool.isRequired,
+  setPreviewWindowOpen: PropTypes.func.isRequired,
+  setEditorWindowOpen: PropTypes.func.isRequired,
 };
 
-const Preview = ({ html }) => {
-  const [closeWindow, setWindowClose] = useState(false);
-
+const Preview = ({
+  html,
+  isPreviewWindowOpen,
+  setPreviewWindowOpen,
+  setEditorWindowOpen,
+}) => {
   const tabCloseHandler = () => {
-    setWindowClose(true);
+    setPreviewWindowOpen(false);
   };
   const createMarkup = () => {
     return { __html: html };
   };
   return (
-    <Wrapper closeWindow={closeWindow}>
+    <Wrapper isWindowOpen={isPreviewWindowOpen}>
       <Tab title="Preview" tabCloseHandler={tabCloseHandler}>
-        <EditButton title="open editor">
+        <EditButton
+          title="open editor"
+          onClick={() => setEditorWindowOpen(true)}
+        >
           <EditIcon />
         </EditButton>
       </Tab>

@@ -10,6 +10,9 @@ const Markdown = () => {
   const [inputText, setInputText] = useState('');
   const [html, setHtml] = useState('');
 
+  const [isEditorOpen, setEditorOpen] = useState(true);
+  const [isPreviewOpen, setPreviewOpen] = useState(true);
+
   useEffect(() => {
     const htmlStr = marked(inputText);
     setHtml(htmlStr);
@@ -21,8 +24,19 @@ const Markdown = () => {
 
   return (
     <Wrapper>
-      <Editor text={inputText} onTextChange={onTextChangeHandler} />
-      <Preview html={html} />
+      <Editor
+        text={inputText}
+        onTextChange={onTextChangeHandler}
+        isEditorWindowOpen={isEditorOpen}
+        setEditorWindowOpen={setEditorOpen}
+        setPreviewWindowOpen={setPreviewOpen}
+      />
+      <Preview
+        html={html}
+        isPreviewWindowOpen={isPreviewOpen}
+        setPreviewWindowOpen={setPreviewOpen}
+        setEditorWindowOpen={setEditorOpen}
+      />
     </Wrapper>
   );
 };

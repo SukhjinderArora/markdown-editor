@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -10,19 +10,28 @@ import { PreviewIcon } from './shared/Icons.sc';
 const propTypes = {
   text: PropTypes.string.isRequired,
   onTextChange: PropTypes.func.isRequired,
+  isEditorWindowOpen: PropTypes.bool.isRequired,
+  setEditorWindowOpen: PropTypes.func.isRequired,
+  setPreviewWindowOpen: PropTypes.func.isRequired,
 };
 
-const Editor = ({ text, onTextChange }) => {
-  const [closeWindow, setWindowClose] = useState(false);
-
+const Editor = ({
+  text,
+  onTextChange,
+  isEditorWindowOpen,
+  setEditorWindowOpen,
+  setPreviewWindowOpen,
+}) => {
   const tabCloseHandler = () => {
-    setWindowClose(true);
+    setEditorWindowOpen(false);
   };
-
   return (
-    <Wrapper closeWindow={closeWindow}>
+    <Wrapper isWindowOpen={isEditorWindowOpen}>
       <Tab title="Editor" tabCloseHandler={tabCloseHandler}>
-        <PreviewButton title="open preview">
+        <PreviewButton
+          title="open preview"
+          onClick={() => setPreviewWindowOpen(true)}
+        >
           <PreviewIcon />
         </PreviewButton>
       </Tab>
