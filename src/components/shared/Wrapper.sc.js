@@ -5,6 +5,9 @@ const Wrapper = styled.section`
   height: 100%;
   flex-grow: 1;
   display: ${(props) => (props.isWindowOpen ? 'block' : 'none')};
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export default Wrapper;

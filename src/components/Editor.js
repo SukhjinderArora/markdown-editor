@@ -12,6 +12,7 @@ const propTypes = {
   onTextChange: PropTypes.func.isRequired,
   isEditorWindowOpen: PropTypes.bool.isRequired,
   setEditorWindowOpen: PropTypes.func.isRequired,
+  isPreviewWindowOpen: PropTypes.bool.isRequired,
   setPreviewWindowOpen: PropTypes.func.isRequired,
 };
 
@@ -20,6 +21,7 @@ const Editor = ({
   onTextChange,
   isEditorWindowOpen,
   setEditorWindowOpen,
+  isPreviewWindowOpen,
   setPreviewWindowOpen,
 }) => {
   const tabCloseHandler = () => {
@@ -39,6 +41,7 @@ const Editor = ({
         onChange={onTextChange}
         value={text}
         placeholder="Type here to start."
+        isFullScreen={!isPreviewWindowOpen}
       />
     </Wrapper>
   );
@@ -54,7 +57,8 @@ const TextEditor = styled.textarea`
   background: ${(props) => props.theme.bg};
   color: ${(props) => props.theme.fg};
   border: 1px solid transparent;
-  border-right: 1px solid ${(props) => props.theme.fg};
+  border-right-color: ${(props) =>
+    props.isFullScreen ? 'transparent' : props.theme.fg};
   font-family: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas,
     'Courier New', monospace;
   font-size: 16px;
@@ -62,6 +66,9 @@ const TextEditor = styled.textarea`
   padding: 10px;
   &:focus {
     outline: none;
+  }
+  @media (max-width: 700px) {
+    border-right: none;
   }
 `;
 
