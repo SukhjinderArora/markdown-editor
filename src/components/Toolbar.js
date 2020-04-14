@@ -41,6 +41,7 @@ const Tab = styled.div`
 
 const TabTitle = styled.h1`
   font-size: 16px;
+  font-weight: 500;
   text-align: center;
 `;
 

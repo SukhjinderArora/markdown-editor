@@ -50,6 +50,7 @@ const StyledTab = styled.div`
 
 const TabTitle = styled.h1`
   font-size: 14px;
+  font-weight: 500;
   margin-left: 10px;
   color: ${(props) => props.theme.fg};
 `;
