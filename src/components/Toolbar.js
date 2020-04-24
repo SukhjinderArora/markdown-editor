@@ -30,13 +30,17 @@ const Wrapper = styled.div`
   }
 `;
 
-const Tab = styled.div`
+const Tab = styled.button`
   color: ${(props) => props.theme.fg};
   background: ${(props) => props.theme.bg};
   flex-grow: 1;
+  border: none;
   border-bottom: 1px solid transparent;
   border-bottom-color: ${(props) =>
     props.activeTab ? props.theme.fg : 'transparent'};
+  &:focus {
+    outline: none;
+  }
 `;
 
 const TabTitle = styled.h1`

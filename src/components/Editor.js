@@ -69,6 +69,7 @@ const TextEditor = styled.textarea`
   }
   @media (max-width: 700px) {
     border-right: none;
+    height: calc(100% - 50px);
   }
 `;
 

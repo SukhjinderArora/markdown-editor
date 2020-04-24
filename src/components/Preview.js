@@ -55,6 +55,10 @@ const PreviewContainer = styled.div`
     'Helvetica Neue', sans-serif;
   line-height: 1.4;
   word-spacing: 1px;
+  @media (max-width: 700px) {
+    height: calc(100% - 50px);
+    max-height: calc(100% - 50px);
+  }
   & > *:first-child {
     margin-top: 0;
   }
