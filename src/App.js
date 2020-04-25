@@ -44,6 +44,8 @@ function App() {
 // Styles
 const Container = styled.div`
   position: relative;
+  height: 100vh;
+  max-height: 100vh;
 `;
 
 export default App;

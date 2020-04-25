@@ -64,9 +64,7 @@ const Markdown = () => {
 // Styles
 const Wrapper = styled.main`
   display: flex;
-  max-height: 100vh;
-  height: 100vh;
-  padding-bottom: 20px;
+  height: calc(100% - 30px);
   @media (max-width: 700px) {
     display: block;
   }

@@ -26,8 +26,7 @@ const Footer = styled.footer`
   left: 0;
   right: 0;
   background: #204c86;
-  height: 20px;
-  padding: 15px 0;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
