@@ -21,15 +21,11 @@ const BottomBar = ({ setSettingsVisible }) => {
 
 // Styles
 const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #204c86;
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  height: 30px;
+  background: #204c86;
 `;
 
 BottomBar.propTypes = propTypes;
